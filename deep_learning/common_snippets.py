@@ -23,19 +23,23 @@ print(f"Using device: {device}")
 
 
 
-# 计算时差
-def format_time_diff(start_timestamp, end_timestamp):
-    # 计算时间差（单位：秒）
-    time_diff = end_timestamp - start_timestamp
 
-    # 计算小时、分钟、秒和毫秒
-    hours = int(time_diff // 3600)  # 小时
-    minutes = int((time_diff % 3600) // 60)  # 分钟
-    seconds = int(time_diff % 60)  # 秒
-    milliseconds = int((time_diff - int(time_diff)) * 1000)  # 毫秒
+import torch
 
-    # 返回格式化的时间差
-    return hours, minutes, seconds, milliseconds
+if torch.cuda.is_available():
+    gpu_index = torch.cuda.current_device()
+    print(f'当前使用的 GPU 编号: {gpu_index}')
+    # 获取当前可用的 GPU 数量
+    print(f'Number of GPUs: {torch.cuda.device_count()}')
+    print(f'GPU 设备名称: {torch.cuda.get_device_name(gpu_index)}')
+else:
+    print('未检测到可用的 GPU')
 
 
+
+import subprocess
+
+# 运行 nvidia-smi 命令并打印输出
+result = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE)
+print(result.stdout.decode())
 

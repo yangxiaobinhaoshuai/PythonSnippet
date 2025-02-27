@@ -9,7 +9,7 @@ time.sleep(0.060)
 end_timestamp = time.time()
 
 
-from deelp_learning.common_function import format_time_diff
+from deep_learning.common_snippets import format_time_diff
 # 调用函数
 hours, minutes, seconds, milliseconds = format_time_diff(start_timestamp, end_timestamp)
 
