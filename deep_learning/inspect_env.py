@@ -21,6 +21,11 @@ if __name__ == '__main__':
     parser.add_argument("--proc_title", type=str, default=f'custom_proc')
     args = parser.parse_args()
     print("inspect_env args", args)
+    if args.proc_title:
+        from common_functions import setMyProcTitle
+        setMyProcTitle(args.proc_title)
+
+
 
 
 # e.g.
