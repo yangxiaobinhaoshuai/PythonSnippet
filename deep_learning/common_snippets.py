@@ -1,5 +1,10 @@
 
 
+# Choose gpu
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "7"
+
+
 
 # 查看当前 pip packages 位置
 import sysconfig

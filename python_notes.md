@@ -7,3 +7,6 @@
 ## Tips
 
 - For PyCharm reload packages : Double shift, then, select 'rescan available Python Modules And Packages'.
+- 抑制所有 warning 
+  -  # noinspection PyUnresolvedReferences
+- 

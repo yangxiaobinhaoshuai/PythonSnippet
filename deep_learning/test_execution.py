@@ -2,17 +2,19 @@ import time
 from turtledemo.penrose import start
 
 
-print("Test execution.")
 
-start_timestamp = time.time()
-time.sleep(0.060)
-end_timestamp = time.time()
+# Choose gpu
+import os
+import time
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "5"
 
 
-from deep_learning.common_snippets import format_time_diff
-# 调用函数
-hours, minutes, seconds, milliseconds = format_time_diff(start_timestamp, end_timestamp)
+print("curren pid:", os.getpid())
 
-# 打印结果
-print(f"时间差: {hours}小时 {minutes}分钟 {seconds}秒 {milliseconds}毫秒")
+import runpy
+# os.system("python ../deep_learning/inspect_env.py --proc_title=我的GPU进程")
+params= {"proc_title": "ggggg"}
+runpy.run_path("inspect_env.py", run_name="__main__", init_globals=params)
 
+time.sleep(300)
