@@ -74,3 +74,8 @@ some_command | ccze
 - Usage : some_command | lolcat
 
 
+### Numpy Issues
+- NumPy 的视图机制在处理大数组时，即使只取部分数据，也会保持对原始数据的引用，这可能导致内存使用效率不高
+  - 注意不要在循环内使用 np.slice 
+
+
