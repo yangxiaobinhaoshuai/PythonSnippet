@@ -56,6 +56,15 @@
 alias run='highlight_paths'
 ```
 
+如果命令卡住不输出：命令前 + PYTHONUNBUFFERED=1
+```aiignore
+# 添加 highlight_paths 函数和 run 别名到 shell 配置文件
+RUN echo 'highlight_paths() {' >> /root/.bashrc && \
+    echo '    PYTHONUNBUFFERED=1 "$@" 2> >(sed -E "s|(/[^[:space:]]+)|\x1b[1;31m\1\x1b[0m|g" >&2) | sed -E "s|(/[^[:space:]]+)|\x1b[1;34m\1\x1b[0m|g" || true' >> /root/.bashrc && \
+    echo '}' >> /root/.bashrc && \
+    echo 'alias run="highlight_paths"' >> /root/.bashrc
+```
+
 步骤 2：重新加载 ~/.bashrc
 ```aiignore
 source ~/.bashrc
